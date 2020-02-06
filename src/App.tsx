@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from '@emotion/styled'
-import { useTheme } from './ThemeContextProvider'
+import { useTheme } from './ThemeContext'
 import { Itheme } from './theme'
 
 /**
@@ -18,11 +18,17 @@ const Wrapper: any = styled<'div', Itheme>('div')`
   }
 `
 
+const Title = styled.h1`
+  margin: 0;
+`
+
 const App = () => {
   const themeState = useTheme()
+
   return (
     <Wrapper>
       <div>
+        <Title>Click the button below.</Title>
         <button data-testid="toggle-button" onClick={() => themeState.toggle()}>
           Clickety click{themeState.isDark ? '☀️' : '🌑'}
         </button>

@@ -30,7 +30,7 @@ const useDarkMode = (): [ThemeType, React.Dispatch<React.SetStateAction<ThemeTyp
   useEffect(() => {
     const isDark = localStorage.getItem('isDark') === 'true'
     setThemeState({ ...themeState, isDark, hasThemeMounted: true })
-  }, [themeState])
+  }, [])
 
   return [themeState, setThemeState]
 }
@@ -48,10 +48,10 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     setThemeState({ ...themeState, isDark })
   }
 
-  const computedTheme = themeState.isDark ? getTheme('dark') : getTheme('light')
+  const theme = themeState.isDark ? getTheme('dark') : getTheme('light')
 
   return (
-    <EmotionThemeProvider theme={computedTheme}>
+    <EmotionThemeProvider theme={theme}>
       <ThemeContext.Provider
         value={{
           isDark: themeState.isDark,
