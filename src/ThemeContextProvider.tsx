@@ -43,7 +43,6 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   const toggle = () => {
-    console.log('here')
     const isDark = !themeState.isDark
     localStorage.setItem('isDark', JSON.stringify(isDark))
     setThemeState({ ...themeState, isDark })
