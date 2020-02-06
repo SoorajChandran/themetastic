@@ -1,3 +1,4 @@
+// TODO: Find a better variable name  for ThemeType
 export interface ThemeType {
   isDark: boolean
   hasThemeMounted: boolean
