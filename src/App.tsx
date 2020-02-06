@@ -22,9 +22,10 @@ const App = () => {
   const themeState = useTheme()
   return (
     <Wrapper>
-      <h1>Clickety click</h1>
       <div>
-        <button onClick={() => themeState.toggle()}>{themeState.isDark ? '☀️' : '🌑'}</button>
+        <button data-testid="toggle-button" onClick={() => themeState.toggle()}>
+          Clickety click{themeState.isDark ? '☀️' : '🌑'}
+        </button>
       </div>
     </Wrapper>
   )
