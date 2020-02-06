@@ -3,22 +3,14 @@ import { createContext, useState, useEffect } from 'react'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import getTheme from './theme'
 
-interface ThemeType {
-  isDark: boolean
-  hasThemeMounted: boolean
-}
+import { IContext, ThemeType } from './types'
 
-interface ContextType {
-  isDark: boolean
-  toggleTheme: () => void
-}
-
-const defaultContextData: ContextType = {
+const defaultContextData: IContext = {
   isDark: false,
   toggleTheme: () => {},
 }
 
-const ThemeContext = createContext<ContextType>(defaultContextData)
+const ThemeContext = createContext<IContext>(defaultContextData)
 const useTheme = () => React.useContext(ThemeContext)
 
 /**

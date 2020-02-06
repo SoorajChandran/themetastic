@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { useTheme } from './ThemeContext'
-import { Itheme } from './theme'
+import { ITheme } from './types'
 
 /**
  * the any types here are because of
@@ -9,7 +9,7 @@ import { Itheme } from './theme'
  * TODO: Fix this with work arounds mentioned in the issue
  */
 
-const Wrapper: any = styled<'div', Itheme>('div')`
+const Wrapper: any = styled<'div', ITheme>('div')`
   background: ${props => (props.theme as any).background};
   width: 100vw;
   height: 100vh;
