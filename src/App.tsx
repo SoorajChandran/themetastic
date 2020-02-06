@@ -29,7 +29,7 @@ const App = () => {
     <Wrapper>
       <div>
         <Title>Click the button below.</Title>
-        <button data-testid="toggle-button" onClick={() => themeState.toggle()}>
+        <button data-testid="toggle-button" onClick={() => themeState.toggleTheme()}>
           Clickety click{themeState.isDark ? '☀️' : '🌑'}
         </button>
       </div>

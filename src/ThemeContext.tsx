@@ -10,17 +10,20 @@ interface ThemeType {
 
 interface ContextType {
   isDark: boolean
-  toggle: () => void
+  toggleTheme: () => void
 }
 
 const defaultContextData: ContextType = {
   isDark: false,
-  toggle: () => {},
+  toggleTheme: () => {},
 }
 
 const ThemeContext = createContext<ContextType>(defaultContextData)
 const useTheme = () => React.useContext(ThemeContext)
 
+/**
+ * A custom hook to check the local storage and update the states with the current theme
+ */
 const useDarkMode = (): [ThemeType, React.Dispatch<React.SetStateAction<ThemeType>>] => {
   const [themeState, setThemeState] = useState<ThemeType>({
     isDark: false,
@@ -42,7 +45,10 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     return <div />
   }
 
-  const toggle = () => {
+  /**
+   * Switches the current theme and updates the local storage and state. DUH!
+   */
+  const toggleTheme = () => {
     const isDark = !themeState.isDark
     localStorage.setItem('isDark', JSON.stringify(isDark))
     setThemeState({ ...themeState, isDark })
@@ -55,7 +61,7 @@ const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       <ThemeContext.Provider
         value={{
           isDark: themeState.isDark,
-          toggle,
+          toggleTheme,
         }}
       >
         {children}
