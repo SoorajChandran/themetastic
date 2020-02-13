@@ -12,6 +12,7 @@ import { ITheme } from './types'
 const Wrapper: any = styled<'div', ITheme>('div')`
   background: ${props => (props.theme as any).background};
   width: 100vw;
+  text-align: center;
   height: 100vh;
   h1 {
     color: ${props => (props.theme as any).body};
@@ -22,16 +23,25 @@ const Title = styled.h1`
   margin: 0;
 `
 
+const ToggleButton = styled.button`
+  margin: 0;
+  border: 0;
+  font-size: 80px;
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+`
+
 const App = () => {
   const themeState = useTheme()
 
   return (
     <Wrapper>
       <div>
-        <Title>Click the button below.</Title>
-        <button data-testid="toggle-button" onClick={() => themeState.toggleTheme()}>
-          Clickety click{themeState.isDark ? '☀️' : '🌑'}
-        </button>
+        <Title>Click on the icon below</Title>
+        <ToggleButton data-testid="toggle-button" onClick={() => themeState.toggleTheme()}>
+          {themeState.isDark ? '☀️' : '🌑'}
+        </ToggleButton>
       </div>
     </Wrapper>
   )
